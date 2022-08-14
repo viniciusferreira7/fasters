@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 export const SearchInputContainer = styled.div`
   display: flex;
+  gap: 1rem;
 `
 
 export const InputContainer = styled.div`
@@ -22,10 +23,15 @@ export const InputContainer = styled.div`
     color: ${(props) => props.theme['green-300']};
   }
 
+  @media screen and (max-width: 768px) {
+    width: 8rem;
+  }
+
   input {
-    flex: 1;
+    width: 100%;
     border: 0;
     color: ${(props) => props.theme['gray-300']};
+    background-color: ${(props) => props.theme['gray-100']};
 
     &::placeholder {
       color: ${(props) => props.theme['gray-300']};

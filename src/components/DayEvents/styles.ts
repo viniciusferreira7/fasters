@@ -7,7 +7,7 @@ export const DayEventsContainer = styled.section`
 
   width: 19.93rem;
 
-  padding: 2rem 2.5rem 0 2rem;
+  margin-left: 2rem;
 `
 
 export const NextEventContainer = styled.div`
@@ -16,7 +16,6 @@ export const NextEventContainer = styled.div`
   gap: 0.75rem;
 
   min-width: 20.5rem;
-
   max-height: 23.25rem;
 
   overflow-y: auto;

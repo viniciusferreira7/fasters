@@ -27,6 +27,12 @@ export const GlobalStyles = createGlobalStyle`
     background: ${(props) => props.theme['green-300']};
   }
 
+  html {
+    @media screen and (max-width: 768px) {
+      font-size:36px;
+    }
+  }
+
   body, input, textarea, button {
     font-size:1rem ;
     font-family: 'DM Sans', sans-serif;

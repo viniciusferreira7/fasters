@@ -10,8 +10,10 @@ export default function Header() {
         <p>Quinta-Feira - 4 de Jan - 2022</p>
       </TitleEventDateContainer>
 
-      <CreateEvent />
-      <SearchInput />
+      <div>
+        <CreateEvent />
+        <SearchInput />
+      </div>
     </HeaderContainer>
   )
 }

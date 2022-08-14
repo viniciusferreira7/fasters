@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import TimeEvent from '../components/TimeEvent'
+import FastersGrid from '../components/FastersGrid'
 
 export default function Home() {
   return (
@@ -7,10 +7,7 @@ export default function Home() {
       <Head>
         <title>Fasters</title>
       </Head>
-      {/* <SideBar /> */}
-      {/* <Header /> */}
-      {/* <DayEvents /> */}
-      <TimeEvent />
+      <FastersGrid />
     </>
   )
 }

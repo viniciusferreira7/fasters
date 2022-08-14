@@ -8,11 +8,13 @@ export const SideBarContainer = styled.aside<StatusMenu>`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 0.25rem;
 
   max-width: ${(props) => (props.active ? '16.8rem' : '5rem')};
-  padding-top: 1rem;
+
+  border: 1px solid
+    ${(props) => (props.active ? props.theme['gray-200'] : 'transparent')};
 
   & > svg {
     color: ${(props) => props.theme['blue-800']};
@@ -33,6 +35,10 @@ export const MenuContainer = styled.aside<StatusMenu>`
 `
 
 export const LogoContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   padding: 1rem 0.43rem 0.87rem 0.37rem;
   background-color: ${(props) => props.theme['blue-500']};
 `

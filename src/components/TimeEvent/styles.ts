@@ -5,6 +5,7 @@ export const TimeEventContainer = styled.section`
   flex-direction: column;
 
   max-width: 44.5rem;
+  width: 100%;
   height: 47.125rem;
   padding-left: 2.5rem;
 
@@ -42,6 +43,10 @@ export const HourContainer = styled.div`
 
   font-size: 0.81rem;
   color: ${(props) => props.theme['gray-500']};
+
+  @media screen and (max-width: 768px) {
+    width: 2rem;
+  }
 `
 
 export const InfoContainer = styled.div`
@@ -49,6 +54,11 @@ export const InfoContainer = styled.div`
   flex-direction: column;
 
   width: 34.5rem;
+
+  @media screen and (max-width: 768px) {
+    width: 18rem;
+    max-width: 100%;
+  }
 
   div {
     border-left: 1px solid ${(props) => props.theme['gray-200']};
