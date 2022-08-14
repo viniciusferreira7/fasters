@@ -1,4 +1,4 @@
-import CreateEvent from '../CreateEvent'
+import CreateEventButton from '../CreateEventButton'
 import SearchInput from '../SearchInput'
 import { HeaderContainer, TitleEventDateContainer } from './styles'
 
@@ -11,7 +11,7 @@ export default function Header() {
       </TitleEventDateContainer>
 
       <div>
-        <CreateEvent />
+        <CreateEventButton />
         <SearchInput />
       </div>
     </HeaderContainer>
