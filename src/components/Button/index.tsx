@@ -1,4 +1,4 @@
-import React, { ButtonHTMLAttributes, ReactElement } from 'react'
+import { ButtonHTMLAttributes, ReactElement } from 'react'
 import { IconBaseProps } from 'react-icons/lib'
 import { ButtonContainer } from './styles'
 

@@ -34,9 +34,9 @@ export default function SideBar() {
   )
 
   return (
-    <MenuContainer active={closeMenu}>
+    <SideBarContainer active={closeMenu}>
       {isCloseMenu}
-      <SideBarContainer active={closeMenu}>
+      <MenuContainer active={closeMenu}>
         <LogoContainer>
           <Image
             src={fastersLogo}
@@ -65,7 +65,7 @@ export default function SideBar() {
           <Button icon={<BsGear size={21.52} />}>Configurações</Button>
           <Button icon={<IoExitOutline size={24} />}>Sair</Button>
         </SystemContainer>
-      </SideBarContainer>
-    </MenuContainer>
+      </MenuContainer>
+    </SideBarContainer>
   )
 }

@@ -4,7 +4,7 @@ interface StatusMenu {
   active: boolean
 }
 
-export const MenuContainer = styled.div<StatusMenu>`
+export const SideBarContainer = styled.aside<StatusMenu>`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -19,7 +19,7 @@ export const MenuContainer = styled.div<StatusMenu>`
   }
 `
 
-export const SideBarContainer = styled.aside<StatusMenu>`
+export const MenuContainer = styled.aside<StatusMenu>`
   display: flex;
   flex-direction: column;
 
