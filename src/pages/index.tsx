@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import Header from '../components/Header'
+import DayEvents from '../components/DayEvents'
 
 export default function Home() {
   return (
@@ -8,7 +8,8 @@ export default function Home() {
         <title>Fasters</title>
       </Head>
       {/* <SideBar /> */}
-      <Header />
+      {/* <Header /> */}
+      <DayEvents />
     </>
   )
 }
