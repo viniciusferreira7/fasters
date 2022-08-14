@@ -11,6 +11,22 @@ export const GlobalStyles = createGlobalStyle`
     outline: 0;
   }
 
+  ::-webkit-scrollbar{
+    width: 0.5rem;
+  }
+
+  ::-webkit-scrollbar-thumb{
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: ${(props) => props.theme['green-100']};
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: ${(props) => props.theme['green-300']};
+  }
+
   body, input, textarea, button {
     font-size:1rem ;
     font-family: 'DM Sans', sans-serif;
