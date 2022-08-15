@@ -18,7 +18,29 @@ type EventContextType = {
 }
 
 export const initialState = {
-  events: [],
+  events: [
+    {
+      id: 555445,
+      date: 'string',
+      time: 'string',
+      title: 'string',
+      locale: 'string',
+    },
+    {
+      id: 54445,
+      date: 'string',
+      time: 'string',
+      title: 'string',
+      locale: 'string',
+    },
+    {
+      id: 445,
+      date: 'string',
+      time: 'string',
+      title: 'string',
+      locale: 'string',
+    },
+  ],
   date: new Date(),
 }
 

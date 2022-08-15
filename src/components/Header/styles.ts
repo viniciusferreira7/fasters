@@ -28,8 +28,10 @@ export const TitleEventDateContainer = styled.article`
   flex-direction: column;
   gap: 0.25rem;
 
-  margin-right: 7.18rem;
+  margin-right: 5.5rem;
   margin-left: 2rem;
+
+  text-transform: capitalize;
 
   h2 {
     font-size: 1.5rem;

@@ -27,6 +27,7 @@ export default function EventCreationModal({
   setShowModal,
 }: ModalProps) {
   const { dispatch } = useContext(Context)
+  // eslint-disable-next-line no-unused-vars
   const [disabledButton, setDisabledButton] = useState([])
   const [locale, setLocale] = useState('')
   const { data } = useFetch(locale)

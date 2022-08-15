@@ -31,6 +31,7 @@ export default function EventCard({ event }: EventProps) {
         <TimeIconContainer>
           <BsClock size={20} />
           <p>{event.time}</p>
+          <p>{event.date}</p>
         </TimeIconContainer>
         <p>Cidade: {event.locale}</p>
         <p>{event.description}</p>

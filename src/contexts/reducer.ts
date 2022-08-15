@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 type ActionMap<M extends { [index: string]: any }> = {
   [Key in keyof M]: M[Key] extends undefined
     ? {
@@ -60,7 +61,6 @@ export const EventReducer = (
   switch (action.type) {
     case 'CREATE_EVENT':
       return [
-        ...state,
         {
           id: action.payload.id,
           date: action.payload.date,
@@ -69,6 +69,7 @@ export const EventReducer = (
           locale: action.payload.locale,
           description: action.payload.description,
         },
+        ...state,
       ]
     case 'FILTER_EVENT':
       return state.filter((event) => event.title.includes(action.payload.title))

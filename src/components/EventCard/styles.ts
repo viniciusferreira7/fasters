@@ -17,14 +17,14 @@ export const EventCardContainer = styled.div`
 
   & > svg {
     position: relative;
-    right: -17rem;
+    right: -14rem;
 
-    color: ${(props) => props.theme['green-300']};
+    color: ${(props) => props.theme['blue-500']};
 
     cursor: pointer;
 
     &:hover {
-      color: ${(props) => props.theme['green-100']};
+      color: ${(props) => props.theme['green-300']};
     }
   }
 

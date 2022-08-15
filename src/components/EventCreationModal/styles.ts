@@ -13,7 +13,7 @@ export const Background = styled.div`
   left: 0;
 
   background-color: ${(props) => props.theme['blue-500']};
-  opacity: 0.9;
+  opacity: 1;
 
   transform: all 300ms ease;
 `
