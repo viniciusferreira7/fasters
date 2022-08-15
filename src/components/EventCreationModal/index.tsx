@@ -26,7 +26,7 @@ export default function EventCreationModal({
   showModal,
   setShowModal,
 }: ModalProps) {
-  const { state, dispatch } = useContext(Context)
+  const { dispatch } = useContext(Context)
   const [disabledButton, setDisabledButton] = useState([])
   const [locale, setLocale] = useState('')
   const { data } = useFetch(locale)
@@ -47,6 +47,14 @@ export default function EventCreationModal({
   function handleCloseModalButton() {
     setShowModal(false)
   }
+
+  const animation = useSpring({
+    config: {
+      duration: 400,
+    },
+    opacity: showModal ? 1 : 0,
+    transform: showModal ? 'translateY(0%)' : 'translateY(-100%)',
+  })
 
   function handleCheckInputEmpty(event: ChangeEvent<HTMLInputElement>) {
     setDisabledButton([event.target.value])
@@ -72,14 +80,6 @@ export default function EventCreationModal({
       })
     }
   }
-
-  const animation = useSpring({
-    config: {
-      duration: 400,
-    },
-    opacity: showModal ? 1 : 0,
-    transform: showModal ? 'translateY(0%)' : 'translateY(-100%)',
-  })
 
   const isDateTitleEmpty =
     titleRef.current?.value === '' || dataRef.current?.value.length === 0
