@@ -18,6 +18,7 @@ export const SideBarContainer = styled.aside<StatusMenu>`
 
   & > svg {
     color: ${(props) => props.theme['blue-800']};
+    cursor: pointer;
   }
 `
 

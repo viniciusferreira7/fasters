@@ -27,6 +27,7 @@ export const ModalContainer = styled.div`
 
   width: 20.625rem;
   height: 31.25rem;
+  padding: 0.5rem 0;
 
   position: relative;
   z-index: 10;
@@ -93,9 +94,27 @@ export const ModalContainer = styled.div`
     cursor: pointer;
 
     &:hover {
-      background-color: ${(props) => props.theme['blue-800']};
-      color: ${(props) => props.theme['white-100']};
+      background-color: ${(props) => props.theme['green-100']};
+      color: ${(props) => props.theme['green-300']};
       border-color: ${(props) => props.theme['green-300']};
     }
+
+    &:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+  }
+`
+
+export const InfoTempContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: ${(props) => props.theme['green-300']};
+
+  div > img {
+    width: 1rem;
+    height: 1rem;
   }
 `
