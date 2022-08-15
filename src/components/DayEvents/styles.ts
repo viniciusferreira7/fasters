@@ -19,4 +19,12 @@ export const NextEventContainer = styled.div`
   max-height: 23.25rem;
 
   overflow-y: auto;
+
+  & > p {
+    margin-top: 3rem;
+
+    text-align: center;
+    color: ${(props) => props.theme['gray-300']};
+    font-size: 1.3rem;
+  }
 `

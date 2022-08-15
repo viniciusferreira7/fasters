@@ -11,14 +11,15 @@ type ActionMap<M extends { [index: string]: any }> = {
 
 export enum Types {
   Create = 'CREATE_EVENT',
+  FIlter = 'FILTER_EVENT',
   Delete = 'DELETE_EVENT',
   Add = 'ADD_DATE',
 }
 
 type EventType = {
   id: number
-  date: Date
-  time: Date
+  date: string
+  time: string
   title: string
   locale: string
   description: string
@@ -27,14 +28,17 @@ type EventType = {
 type EventPayload = {
   [Types.Create]: {
     id: number
-    date: Date
-    time: Date
+    date: string
+    time: string
     title: string
     locale: string
     description: string
   }
   [Types.Delete]: {
     id: number
+  }
+  [Types.FIlter]: {
+    title: string
   }
 }
 
@@ -58,7 +62,7 @@ export const EventReducer = (
       return [
         ...state,
         {
-          id: new Date().getMilliseconds(),
+          id: action.payload.id,
           date: action.payload.date,
           time: action.payload.time,
           title: action.payload.title,
@@ -66,6 +70,9 @@ export const EventReducer = (
           description: action.payload.description,
         },
       ]
+    case 'FILTER_EVENT':
+      return state.filter((event) => event.title.includes(action.payload.title))
+
     case 'DELETE_EVENT':
       return [...state.filter((event) => event.id !== action.payload.id)]
     default:

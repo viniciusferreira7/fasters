@@ -5,8 +5,8 @@ import { DateActions, DateReducer, EventActions, EventReducer } from './reducer'
 
 type EventStateType = {
   id: number
-  date: Date
-  time: Date
+  date: string
+  time: string
   title: string
   locale: string
   description: string
@@ -26,7 +26,7 @@ interface ChildrenProps {
   children: React.ReactNode
 }
 
-const Context = createContext<{
+export const Context = createContext<{
   state: EventContextType
   dispatch: Dispatch<EventActions | DateActions>
 }>({
@@ -42,7 +42,7 @@ const mainReducer = (
   date: DateReducer(date, action),
 })
 
-export const EventContext = ({ children }: ChildrenProps) => {
+export const EventProvider = ({ children }: ChildrenProps) => {
   const [state, dispatch] = useReducer(mainReducer, initialState)
   return (
     <Context.Provider value={{ state, dispatch }}>{children}</Context.Provider>

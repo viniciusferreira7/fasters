@@ -15,6 +15,19 @@ export const EventCardContainer = styled.div`
     margin-bottom: 0.125rem;
   }
 
+  & > svg {
+    position: relative;
+    right: -17rem;
+
+    color: ${(props) => props.theme['green-300']};
+
+    cursor: pointer;
+
+    &:hover {
+      color: ${(props) => props.theme['green-100']};
+    }
+  }
+
   h5 {
     font-size: 1rem;
   }
@@ -24,6 +37,15 @@ export const EventCardContainer = styled.div`
     font-weight: 400;
     line-height: 1.4rem;
     color: ${(props) => props.theme['gray-500']};
+  }
+
+  & > p:nth-of-type(2) {
+    font-size: 0.8rem;
+    color: ${(props) => props.theme['orange-400']};
+  }
+  & > p:last-child {
+    color: ${(props) => props.theme['gray-300']};
+    font-size: 0.8rem;
   }
 `
 

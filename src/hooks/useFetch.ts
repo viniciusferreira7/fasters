@@ -1,11 +1,11 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 
-export function useFetch(city: string) {
+export function useFetch(locale: string) {
   const [data, setData] = useState(null)
   const [error, setError] = useState(null)
 
-  const name = !city ? 'São Paulo' : city
+  const name = !locale ? 'São Paulo' : locale
   useEffect(() => {
     function getWeather(lat: number, lon: number) {
       axios

@@ -1,16 +1,31 @@
+import { AiFillCloseCircle } from 'react-icons/ai'
 import { BsClock } from 'react-icons/bs'
 
 import { EventCardContainer, TimeIconContainer } from './styles'
 
-export default function EventCard() {
+interface EventProps {
+  event: {
+    id: number
+    date: string
+    time: string
+    title: string
+    locale: string
+    description: string
+  }
+}
+
+export default function EventCard({ event }: EventProps) {
   return (
     <EventCardContainer>
-      <h4>Entrevista com RH lore</h4>
-      <p>January 4, 2022</p>
+      <AiFillCloseCircle size={18} />
+      <h4>{event.title}</h4>
+      <p>{event.date}</p>
       <TimeIconContainer>
         <BsClock size={20} />
-        <p>08:00 - 09:30 AM</p>
+        <p>{event.time}</p>
       </TimeIconContainer>
+      <p>Cidade: {event.locale}</p>
+      <p>{event.description}</p>
     </EventCardContainer>
   )
 }

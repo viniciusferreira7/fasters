@@ -3,6 +3,7 @@ import {
   Dispatch,
   MouseEvent,
   SetStateAction,
+  useContext,
   useRef,
   useState,
 } from 'react'
@@ -13,6 +14,8 @@ import { AiFillCloseCircle } from 'react-icons/ai'
 import { Background, InfoTempContainer, ModalContainer } from './styles'
 import { useFetch } from '../../hooks/useFetch'
 import Image from 'next/image'
+import { Context } from '../../contexts/EventsProvider'
+import { Types } from '../../contexts/reducer'
 
 interface ModalProps {
   showModal: boolean
@@ -23,21 +26,17 @@ export default function EventCreationModal({
   showModal,
   setShowModal,
 }: ModalProps) {
+  const { state, dispatch } = useContext(Context)
   const [disabledButton, setDisabledButton] = useState([])
-  const [nameCity, setNameCity] = useState('')
-  const { data } = useFetch(nameCity)
+  const [locale, setLocale] = useState('')
+  const { data } = useFetch(locale)
 
   const modalRef = useRef()
   const dataRef = useRef<HTMLInputElement>()
+  const timeRef = useRef<HTMLInputElement>()
   const titleRef = useRef<HTMLInputElement>()
-
-  const animation = useSpring({
-    config: {
-      duration: 400,
-    },
-    opacity: showModal ? 1 : 0,
-    transform: showModal ? 'translateY(0%)' : 'translateY(-100%)',
-  })
+  const localeRef = useRef<HTMLInputElement>()
+  const descriptionRef = useRef<HTMLTextAreaElement>()
 
   function handleCloseModal(event: MouseEvent) {
     if (modalRef.current === event.target) {
@@ -53,12 +52,37 @@ export default function EventCreationModal({
     setDisabledButton([event.target.value])
   }
 
-  function handleGetNameCity(event: ChangeEvent<HTMLInputElement>) {
-    setNameCity(event.target.value)
+  function handleGetLocale(event: ChangeEvent<HTMLInputElement>) {
+    setLocale(event.target.value)
   }
 
+  function handleCreateEventCard() {
+    setShowModal(false)
+    if (!isDateTitleEmpty) {
+      dispatch({
+        type: Types.Create,
+        payload: {
+          id: new Date().getMilliseconds(),
+          date: dataRef.current.value,
+          time: timeRef.current.value,
+          title: titleRef.current.value,
+          locale: localeRef.current.value,
+          description: descriptionRef.current.value,
+        },
+      })
+    }
+  }
+
+  const animation = useSpring({
+    config: {
+      duration: 400,
+    },
+    opacity: showModal ? 1 : 0,
+    transform: showModal ? 'translateY(0%)' : 'translateY(-100%)',
+  })
+
   const isDateTitleEmpty =
-    titleRef.current?.value.length === 0 || dataRef.current?.value.length === 0
+    titleRef.current?.value === '' || dataRef.current?.value.length === 0
 
   return (
     <>
@@ -74,7 +98,7 @@ export default function EventCreationModal({
                 placeholder="Hora do evento"
                 onChange={handleCheckInputEmpty}
               />
-              <input type="time" placeholder="Data do evento" />
+              <input ref={timeRef} type="time" placeholder="Data do evento" />
 
               <input
                 ref={titleRef}
@@ -83,10 +107,11 @@ export default function EventCreationModal({
                 onChange={handleCheckInputEmpty}
               />
               <input
+                ref={localeRef}
                 type="text"
                 placeholder="Cidade"
-                onChange={handleGetNameCity}
-                value={nameCity}
+                onChange={handleGetLocale}
+                value={locale}
               />
               <InfoTempContainer>
                 <span>{data.name}</span> <span>{data.main.temp} °C</span>{' '}
@@ -99,10 +124,14 @@ export default function EventCreationModal({
                   />
                 </div>
               </InfoTempContainer>
-              <textarea required placeholder="Descrição do evento" />
+              <textarea
+                ref={descriptionRef}
+                required
+                placeholder="Descrição do evento"
+              />
               <button
                 disabled={isDateTitleEmpty}
-                onClick={handleCloseModalButton}
+                onClick={handleCreateEventCard}
               >
                 Criar Evento
               </button>
