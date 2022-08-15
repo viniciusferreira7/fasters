@@ -5,8 +5,8 @@ export function useFetch(city: string) {
   const [data, setData] = useState(null)
   const [error, setError] = useState(null)
 
+  const name = !city ? 'São Paulo' : city
   useEffect(() => {
-    const name = city
     function getWeather(lat: number, lon: number) {
       axios
         .get(`https://api.openweathermap.org/data/2.5/weather`, {
@@ -26,7 +26,7 @@ export function useFetch(city: string) {
     navigator.geolocation.getCurrentPosition((position) =>
       getWeather(position.coords.latitude, position.coords.longitude),
     )
-  }, [setData, city])
+  }, [setData, name])
 
   return { data, error }
 }

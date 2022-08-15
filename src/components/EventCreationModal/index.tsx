@@ -25,7 +25,7 @@ export default function EventCreationModal({
 }: ModalProps) {
   const [disabledButton, setDisabledButton] = useState([])
   const [nameCity, setNameCity] = useState('')
-  const { data, error } = useFetch(nameCity)
+  const { data } = useFetch(nameCity)
 
   const modalRef = useRef()
   const dataRef = useRef<HTMLInputElement>()

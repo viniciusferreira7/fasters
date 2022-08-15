@@ -25,9 +25,9 @@ export const ModalContainer = styled.div`
   align-items: center;
   gap: 2rem;
 
-  width: 20.625rem;
+  width: 21.625rem;
   height: 31.25rem;
-  padding: 0.5rem 0;
+  padding: 1rem;
 
   position: relative;
   z-index: 10;
@@ -40,7 +40,7 @@ export const ModalContainer = styled.div`
 
   svg {
     color: ${(props) => props.theme['green-300']};
-    font-size: 2rem;
+    font-size: 3rem;
 
     cursor: pointer;
 
@@ -80,7 +80,7 @@ export const ModalContainer = styled.div`
     gap: 0.25rem;
 
     width: 9rem;
-    height: 2.4rem;
+    height: 4.4rem;
 
     font-size: 0.87rem;
     font-weight: 400;
