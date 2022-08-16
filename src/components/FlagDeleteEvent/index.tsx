@@ -1,5 +1,5 @@
 import { AiFillCloseCircle } from 'react-icons/ai'
-import { Background } from '../EventCreationModal/styles'
+import { BackgroundContainer } from '../EventCreationModal/styles'
 
 import { useSpring, animated } from 'react-spring'
 import { Dispatch, SetStateAction, useContext, useRef } from 'react'
@@ -39,7 +39,7 @@ export default function FlagDeleteEvent({
     setOpenFlag(false)
   }
   return (
-    <Background ref={modalRef}>
+    <BackgroundContainer ref={modalRef}>
       <animated.div style={animation}>
         <FlagDeleteEventContainer>
           <AiFillCloseCircle size={30} onClick={handleCloseModalButton} />
@@ -47,6 +47,6 @@ export default function FlagDeleteEvent({
           <button onClick={handleDeleteEvent}>Excluir</button>
         </FlagDeleteEventContainer>
       </animated.div>
-    </Background>
+    </BackgroundContainer>
   )
 }

@@ -1,12 +1,19 @@
 // import { createContext } from 'react'
 
-import React, { createContext, Dispatch, useReducer } from 'react'
-import { DateActions, DateReducer, EventActions, EventReducer } from './reducer'
+import React, { createContext, Dispatch, useEffect, useReducer } from 'react'
+import {
+  DateActions,
+  DateReducer,
+  EventActions,
+  EventReducer,
+  Types,
+} from './reducer'
 
 type EventStateType = {
   id: number
   date: string
-  time: string
+  timeStarts: string
+  timeEnds: string
   title: string
   locale: string
   description: string
@@ -22,23 +29,29 @@ export const initialState = {
     {
       id: 555445,
       date: 'string',
-      time: 'string',
+      timeStarted: 'string',
+      timeEnds: 'string',
       title: 'string',
       locale: 'string',
+      description: 'stringstringstringstringstringstringstring',
     },
     {
       id: 54445,
       date: 'string',
-      time: 'string',
+      timeStarted: 'string',
+      timeEnds: 'string',
       title: 'string',
       locale: 'string',
+      description: 'stringstringstringstringstringstringstring',
     },
     {
       id: 445,
       date: 'string',
-      time: 'string',
+      timeStarted: 'string',
+      timeEnds: 'string',
       title: 'string',
       locale: 'string',
+      description: 'stringstringstringstringstringstringstring',
     },
   ],
   date: new Date(),
@@ -66,6 +79,7 @@ const mainReducer = (
 
 export const EventProvider = ({ children }: ChildrenProps) => {
   const [state, dispatch] = useReducer(mainReducer, initialState)
+
   return (
     <Context.Provider value={{ state, dispatch }}>{children}</Context.Provider>
   )

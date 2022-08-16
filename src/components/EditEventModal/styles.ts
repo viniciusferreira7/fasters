@@ -1,29 +1,11 @@
 import styled from 'styled-components'
 
-export const BackgroundContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  width: 100%;
-  height: 100%;
-
-  position: fixed;
-  top: 0;
-  left: 0;
-
-  background-color: ${(props) => props.theme['blue-500']};
-  opacity: 1;
-
-  transform: all 300ms ease;
-`
-
-export const ModalContainer = styled.div`
+export const EditEventModalContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 2rem;
+  gap: 1rem;
 
   width: 21.625rem;
   height: 31.25rem;
@@ -38,7 +20,7 @@ export const ModalContainer = styled.div`
   background-color: ${(props) => props.theme['green-100']};
   box-shadow: 0 5px 16px ${(props) => props.theme['gray-200']};
 
-  svg {
+  & > svg {
     color: ${(props) => props.theme['green-300']};
     font-size: 3rem;
 
@@ -105,16 +87,23 @@ export const ModalContainer = styled.div`
     }
   }
 `
-
-export const InfoTempContainer = styled.div`
+export const TimeContainer = styled.div`
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 15rem;
 
-  color: ${(props) => props.theme['green-300']};
+  svg {
+    color: ${(props) => props.theme['green-300']};
+  }
 
-  div > img {
-    width: 1rem;
-    height: 1rem;
+  input {
+    width: 6.7rem;
+
+    color: ${(props) => props.theme['blue-800']};
+
+    border: 1px solid ${(props) => props.theme['green-300']};
+    border-radius: 5px;
   }
 `

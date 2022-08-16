@@ -20,6 +20,33 @@ export const NextEventContainer = styled.div`
 
   overflow-y: auto;
 
+  & > div:nth-child(2) {
+    animation: changeBackgroundColor 10s;
+
+    p,
+    svg,
+    span {
+      animation: changeBackgroundColor 10s;
+      border-color: 0;
+    }
+
+    @keyframes changeBackgroundColor {
+      0% {
+        background-color: ${(props) => props.theme['orange-400']};
+        color: ${(props) => props.theme['white-orange']};
+      }
+      50% {
+        border-color: ${(props) => props.theme['orange-400']};
+        background-color: ${(props) => props.theme['white-orange']};
+        color: ${(props) => props.theme['white-orange']};
+      }
+      100% {
+        border-color: ${(props) => props.theme['white-orange']};
+        background-color: ${(props) => props.theme['white-100']};
+      }
+    }
+  }
+
   & > p {
     margin-top: 3rem;
 

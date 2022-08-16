@@ -11,31 +11,36 @@ import { useSpring, animated } from 'react-spring'
 
 import { AiFillCloseCircle } from 'react-icons/ai'
 
-import {
-  BackgroundContainer,
-  InfoTempContainer,
-  ModalContainer,
-} from './styles'
-import { useFetch } from '../../hooks/useFetch'
-import Image from 'next/image'
 import { Context } from '../../contexts/EventsProvider'
 import { Types } from '../../contexts/reducer'
-import { TimeContainer } from '../EditEventModal/styles'
+import { BackgroundContainer } from '../EventCreationModal/styles'
+import { EditEventModalContainer, TimeContainer } from './styles'
+import { useFetch } from '../../hooks/useFetch'
 import { BsArrowClockwise } from 'react-icons/bs'
 
-interface ModalProps {
-  showModal: boolean
-  setShowModal: Dispatch<SetStateAction<boolean>>
+interface EditEvent {
+  id: number
+  date: string
+  timeStarts: string
+  title: string
+  locale: string
+  description: string
 }
 
-export default function EventCreationModal({
-  showModal,
-  setShowModal,
-}: ModalProps) {
+interface ModalProps {
+  edit: EditEvent
+  openEdit: boolean
+  setOpenEdit: Dispatch<SetStateAction<boolean>>
+}
+
+export default function EditModal({ edit, openEdit, setOpenEdit }: ModalProps) {
   const { dispatch } = useContext(Context)
+
   // eslint-disable-next-line no-unused-vars
   const [disabledButton, setDisabledButton] = useState([])
   const [locale, setLocale] = useState('')
+
+  // eslint-disable-next-line no-unused-vars
   const { data } = useFetch(locale)
 
   const modalRef = useRef()
@@ -48,20 +53,20 @@ export default function EventCreationModal({
 
   function handleCloseModal(event: MouseEvent) {
     if (modalRef.current === event.target) {
-      setShowModal(false)
+      setOpenEdit(false)
     }
   }
 
   function handleCloseModalButton() {
-    setShowModal(false)
+    setOpenEdit(false)
   }
 
   const animation = useSpring({
     config: {
       duration: 400,
     },
-    opacity: showModal ? 1 : 0,
-    transform: showModal ? 'translateY(0%)' : 'translateY(-100%)',
+    opacity: openEdit ? 1 : 0,
+    transform: openEdit ? 'translateY(0%)' : 'translateY(-100%)',
   })
 
   function handleCheckInputEmpty(event: ChangeEvent<HTMLInputElement>) {
@@ -72,8 +77,8 @@ export default function EventCreationModal({
     setLocale(event.target.value)
   }
 
-  function handleCreateEventCard() {
-    setShowModal(false)
+  function handleEditEventCard() {
+    setOpenEdit(false)
     if (!isDateTitleEmpty) {
       dispatch({
         type: Types.Create,
@@ -87,20 +92,21 @@ export default function EventCreationModal({
           description: descriptionRef.current.value,
         },
       })
+      dispatch({ type: Types.Delete, payload: { id: edit.id } })
     }
   }
 
   const isDateTitleEmpty =
-    !titleRef.current?.value || dataRef.current?.value.length === 0
+    titleRef.current?.value === '' || dataRef.current?.value.length === 0
 
   return (
     <>
-      {showModal ? (
+      {openEdit ? (
         <BackgroundContainer ref={modalRef} onClick={handleCloseModal}>
           <animated.div style={animation}>
-            <ModalContainer>
+            <EditEventModalContainer>
               <AiFillCloseCircle onClick={handleCloseModalButton} />
-              <h2>Create an event</h2>
+              <h2>Edit an event</h2>
               <input
                 ref={dataRef}
                 type="date"
@@ -115,39 +121,21 @@ export default function EventCreationModal({
               <input
                 ref={titleRef}
                 type="text"
-                placeholder="Event title"
+                placeholder={edit.title}
                 onChange={handleCheckInputEmpty}
               />
               <input
                 ref={localeRef}
                 type="text"
-                placeholder="City"
+                placeholder={edit.locale}
                 onChange={handleGetLocale}
                 value={locale}
               />
-              <InfoTempContainer>
-                <span>{data.name}</span> <span>{data.main.temp} °C</span>{' '}
-                <div>
-                  <Image
-                    src={`https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/${data.weather[0].icon}.svg`}
-                    alt={data.weather.description}
-                    width={30}
-                    height={30}
-                  />
-                </div>
-              </InfoTempContainer>
-              <textarea
-                ref={descriptionRef}
-                required
-                placeholder="Description of the event"
-              />
-              <button
-                disabled={isDateTitleEmpty}
-                onClick={handleCreateEventCard}
-              >
-                Criar Evento
+              <textarea ref={descriptionRef} placeholder={edit.description} />
+              <button disabled={isDateTitleEmpty} onClick={handleEditEventCard}>
+                Editar evento
               </button>
-            </ModalContainer>
+            </EditEventModalContainer>
           </animated.div>
         </BackgroundContainer>
       ) : null}

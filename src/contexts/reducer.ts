@@ -14,13 +14,15 @@ export enum Types {
   Create = 'CREATE_EVENT',
   FIlter = 'FILTER_EVENT',
   Delete = 'DELETE_EVENT',
+  INIT = 'INIT_STORED',
   Add = 'ADD_DATE',
 }
 
 type EventType = {
   id: number
   date: string
-  time: string
+  timeStarts: string
+  timeEnds: string
   title: string
   locale: string
   description: string
@@ -30,7 +32,8 @@ type EventPayload = {
   [Types.Create]: {
     id: number
     date: string
-    time: string
+    timeStarts: string
+    timeEnds: string
     title: string
     locale: string
     description: string
@@ -38,6 +41,7 @@ type EventPayload = {
   [Types.Delete]: {
     id: number
   }
+  [Types.INIT]: EventType[]
   [Types.FIlter]: {
     title: string
   }
@@ -64,7 +68,8 @@ export const EventReducer = (
         {
           id: action.payload.id,
           date: action.payload.date,
-          time: action.payload.time,
+          timeStarts: action.payload.timeStarts,
+          timeEnds: action.payload.timeEnds,
           title: action.payload.title,
           locale: action.payload.locale,
           description: action.payload.description,
@@ -76,6 +81,9 @@ export const EventReducer = (
 
     case 'DELETE_EVENT':
       return [...state.filter((event) => event.id !== action.payload.id)]
+
+    case 'INIT_STORED':
+      return action.payload
     default:
       return state
   }

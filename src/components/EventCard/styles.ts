@@ -8,24 +8,13 @@ export const EventCardContainer = styled.div`
   width: 19.75rem;
   padding: 0.75rem 1rem 0.875rem 1rem;
 
+  background-color: ${(props) => props.theme['white-100']};
+
   border: 1px solid ${(props) => props.theme['gray-200']};
   border-radius: 8px;
 
   & + & {
     margin-bottom: 0.125rem;
-  }
-
-  & > svg {
-    position: relative;
-    right: -14rem;
-
-    color: ${(props) => props.theme['blue-500']};
-
-    cursor: pointer;
-
-    &:hover {
-      color: ${(props) => props.theme['green-300']};
-    }
   }
 
   h5 {
@@ -49,13 +38,33 @@ export const EventCardContainer = styled.div`
   }
 `
 
+export const IconDeleteEditContainer = styled.div`
+  display: flex;
+  justify-content: right;
+  gap: 0.4rem;
+
+  svg {
+    color: ${(props) => props.theme['blue-500']};
+
+    cursor: pointer;
+
+    &:hover {
+      color: ${(props) => props.theme['green-300']};
+    }
+  }
+`
+
 export const TimeIconContainer = styled.div`
   display: flex;
   align-items: center;
-  gap: 0.625rem;
+  gap: 0.1rem;
   margin-top: 0.875rem;
 
   color: ${(props) => props.theme['green-300']};
+
+  svg {
+    margin-right: 0.525rem;
+  }
 
   p {
     font-size: 0.75rem;
