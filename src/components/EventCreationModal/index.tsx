@@ -20,7 +20,7 @@ import { useFetch } from '../../hooks/useFetch'
 import Image from 'next/image'
 import { Context } from '../../contexts/EventsProvider'
 import { Types } from '../../contexts/reducer'
-import { TimeContainer } from '../EditEventModal/styles'
+import { LabelContainer, TimeContainer } from '../EditEventModal/styles'
 import { BsArrowClockwise } from 'react-icons/bs'
 
 interface ModalProps {
@@ -108,10 +108,15 @@ export default function EventCreationModal({
                 max="2102-12-31"
                 onChange={handleCheckInputEmpty}
               />
+              <LabelContainer>
+                <label htmlFor="timeStats">Start</label>
+                <label htmlFor="timeEnds">End</label>
+              </LabelContainer>
+
               <TimeContainer>
-                <input ref={timeStartsRef} type="time" />
+                <input ref={timeStartsRef} name="timeStats" type="time" />
                 <BsArrowClockwise size={20} />
-                <input ref={timeEndsRef} type="time" />
+                <input ref={timeEndsRef} name="timeEnds" type="time" />
               </TimeContainer>
 
               <input
@@ -128,7 +133,8 @@ export default function EventCreationModal({
                 value={locale}
               />
               <InfoTempContainer>
-                <span>{data.name}</span> <span>{data.main.temp} °C</span>{' '}
+                <span>{data.name == null ? '' : data.name}</span>{' '}
+                <span>{data.main.temp} °C</span>{' '}
                 <div>
                   <Image
                     src={`https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/${data.weather[0].icon}.svg`}

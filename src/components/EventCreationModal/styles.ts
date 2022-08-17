@@ -9,6 +9,7 @@ export const BackgroundContainer = styled.div`
   height: 100%;
 
   position: fixed;
+  z-index: 10;
   top: 0;
   left: 0;
 
@@ -26,7 +27,7 @@ export const ModalContainer = styled.div`
   gap: 2rem;
 
   width: 21.625rem;
-  height: 31.25rem;
+  height: 33.25rem;
   padding: 1rem;
 
   position: relative;

@@ -14,7 +14,11 @@ import { AiFillCloseCircle } from 'react-icons/ai'
 import { Context } from '../../contexts/EventsProvider'
 import { Types } from '../../contexts/reducer'
 import { BackgroundContainer } from '../EventCreationModal/styles'
-import { EditEventModalContainer, TimeContainer } from './styles'
+import {
+  EditEventModalContainer,
+  LabelContainer,
+  TimeContainer,
+} from './styles'
 import { useFetch } from '../../hooks/useFetch'
 import { BsArrowClockwise } from 'react-icons/bs'
 
@@ -114,10 +118,15 @@ export default function EditModal({ edit, openEdit, setOpenEdit }: ModalProps) {
                 max="2102-12-31"
                 onChange={handleCheckInputEmpty}
               />
+              <LabelContainer>
+                <label htmlFor="timeStats">Start</label>
+                <label htmlFor="timeEnds">End</label>
+              </LabelContainer>
+
               <TimeContainer>
-                <input ref={timeStartsRef} type="time" />
+                <input ref={timeStartsRef} name="timeStats" type="time" />
                 <BsArrowClockwise size={20} />
-                <input ref={timeEndsRef} type="time" />
+                <input ref={timeEndsRef} name="timeEnds" type="time" />
               </TimeContainer>
 
               <input

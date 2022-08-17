@@ -91,8 +91,8 @@ export const TimeContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
-  width: 15rem;
+  gap: 0.8rem;
+  width: 20rem;
 
   svg {
     color: ${(props) => props.theme['green-300']};
@@ -105,5 +105,16 @@ export const TimeContainer = styled.div`
 
     border: 1px solid ${(props) => props.theme['green-300']};
     border-radius: 5px;
+  }
+`
+export const LabelContainer = styled.div`
+  display: flex;
+  justify-content: space-around;
+
+  width: 100%;
+
+  label {
+    color: ${(props) => props.theme['green-300']};
+    font-size: 1rem;
   }
 `

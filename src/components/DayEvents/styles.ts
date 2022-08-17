@@ -21,16 +21,16 @@ export const NextEventContainer = styled.div`
   overflow-y: auto;
 
   & > div:nth-child(2) {
-    animation: changeBackgroundColor 10s;
+    animation: changeColor 10s;
 
     p,
     svg,
     span {
-      animation: changeBackgroundColor 10s;
+      animation: changeColor 10s;
       border-color: 0;
     }
 
-    @keyframes changeBackgroundColor {
+    @keyframes changeColor {
       0% {
         background-color: ${(props) => props.theme['orange-400']};
         color: ${(props) => props.theme['white-orange']};

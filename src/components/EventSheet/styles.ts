@@ -72,36 +72,112 @@ export const InfoContainer = styled.div`
   & > div:first-child {
     border-bottom: 1px solid ${(props) => props.theme['gray-200']};
   }
-
-  & > div > div:nth-child(1n + 4) {
+`
+export const TimeLapseContainer = styled.div`
+  & > div:nth-child(1n + 4) {
     background-color: ${(props) => props.theme['white-orange']};
     color: ${(props) => props.theme['orange-400']};
 
     border: 0.5px solid ${(props) => props.theme['orange-400']};
     border-radius: 8px;
+
+    &::-webkit-scrollbar-thumb,
+    & > p::-webkit-scrollbar-thumb {
+      background: ${(props) => props.theme['orange-400']};
+    }
+
+    &::-webkit-scrollbar-track,
+    & > p::-webkit-scrollbar-track {
+      background: ${(props) => props.theme['white-orange']};
+    }
   }
 
-  & > div > div:nth-child(2n + 3) {
+  & > div:nth-child(2n + 3) {
     background-color: ${(props) => props.theme['green-100']};
     color: ${(props) => props.theme['green-300']};
 
     border: 0.5px solid ${(props) => props.theme['green-300']};
     border-radius: 8px;
+
+    &::-webkit-scrollbar-thumb,
+    & > p::-webkit-scrollbar-thumb {
+      background: ${(props) => props.theme['green-300']};
+    }
+
+    &::-webkit-scrollbar-track,
+    & > p::-webkit-scrollbar-track {
+      background: ${(props) => props.theme['green-100']};
+    }
+
+    & > p {
+      &::-webkit-scrollbar-thumb,
+      & > p::-webkit-scrollbar-thumb {
+        background: ${(props) => props.theme['green-300']};
+      }
+
+      &::-webkit-scrollbar-track,
+      & > p::-webkit-scrollbar-track {
+        background: ${(props) => props.theme['green-100']};
+      }
+    }
   }
 
-  & > div > div:nth-child(3n + 2) {
+  & > div:nth-child(3n + 2) {
     background-color: ${(props) => props.theme['blue-500']};
     color: ${(props) => props.theme['white-100']};
 
     border: 0.5px solid ${(props) => props.theme['blue-800']};
     border-radius: 8px;
+
+    &::-webkit-scrollbar-thumb,
+    & > p::-webkit-scrollbar-thumb {
+      background: ${(props) => props.theme['white-100']};
+    }
+
+    &::-webkit-scrollbar-track,
+    & > p::-webkit-scrollbar-track {
+      background: ${(props) => props.theme['background-100']};
+    }
   }
 
-  & > div > div:nth-child(4n + 1) {
+  & > div:nth-child(4n + 1) {
     background-color: ${(props) => props.theme['gray-200']};
     color: ${(props) => props.theme['gray-500']};
 
     border: 0.5px solid ${(props) => props.theme['gray-500']};
     border-radius: 8px;
+
+    &::-webkit-scrollbar-thumb,
+    & > p::-webkit-scrollbar-thumb {
+      background: ${(props) => props.theme['gray-500']};
+    }
+
+    &::-webkit-scrollbar-track,
+    & > p::-webkit-scrollbar-track {
+      background: ${(props) => props.theme['gray-200']};
+    }
+  }
+
+  & > div:first-child {
+    animation: changeOpacity 10s;
+  }
+
+  @keyframes changeOpacity {
+    0% {
+      opacity: 0;
+    }
+    25% {
+      opacity: 0.25;
+    }
+    50% {
+      opacity: 0.5;
+    }
+    75% {
+      opacity: 0.75;
+    }
+
+    100% {
+      opacity: 1;
+    }
   }
 `

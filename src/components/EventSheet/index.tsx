@@ -6,6 +6,7 @@ import {
   HourContainer,
   InfoContainer,
   EventSheetContainer,
+  TimeLapseContainer,
 } from './styles'
 
 export default function EventSheet() {
@@ -18,11 +19,11 @@ export default function EventSheet() {
           <p>01:00 </p>
         </HourContainer>
         <InfoContainer>
-          <div>
+          <TimeLapseContainer>
             {state.events.map((event) => (
               <EventTimeCard key={event.id} event={event} />
             ))}
-          </div>
+          </TimeLapseContainer>
           <div></div>
         </InfoContainer>
       </BlockContainer>

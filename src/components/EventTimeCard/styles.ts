@@ -3,6 +3,8 @@ import styled from 'styled-components'
 interface PositionProps {
   positionTopHours: number
   positionTopMinutes: number
+  heightHours: number
+  heightMinutes: number
 }
 
 export const EventTimeCardContainer = styled.div<PositionProps>`
@@ -10,19 +12,33 @@ export const EventTimeCardContainer = styled.div<PositionProps>`
   flex-direction: column;
   gap: 0.25rem;
 
-  width: 31rem;
+  overflow-y: auto;
+
+  width: 28rem;
+  max-width: 31rem;
+  height: ${(props) =>
+    props.heightHours +
+    props.heightMinutes -
+    props.positionTopHours -
+    props.positionTopMinutes}rem;
+  padding-top: 1rem;
   padding-left: 1rem;
 
   position: absolute;
-  top: ${(props) => props.positionTopHours}rem;
+  z-index: 1;
+  top: ${(props) => props.positionTopHours + props.positionTopMinutes}rem;
 
   @media screen and (max-width: 768px) {
-    width: 16rem;
+    width: 10rem;
     max-width: 100%;
   }
 
   h2 {
     font-size: 2rem;
     font-weight: 700;
+  }
+
+  p {
+    overflow-x: auto;
   }
 `

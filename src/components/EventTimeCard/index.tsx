@@ -2,7 +2,7 @@ import { EventProps } from '../EventCard'
 import { EventTimeCardContainer } from './styles'
 
 export default function EventTimeCard({ event }: EventProps) {
-  const positionTopValueBasedHour = {
+  const positionTopValueBasedHours = {
     '01': 0,
     '02': 5,
     '03': 10,
@@ -29,28 +29,75 @@ export default function EventTimeCard({ event }: EventProps) {
   }
 
   const positionTopValueBasedMinutes = {
-    '0': 45,
-    '1': 45,
-    '2': 45,
-    '3': 45,
-    '4': 45,
-    '5': 45,
+    '0': 0,
+    '1': 0.83,
+    '2': 1.66,
+    '3': 2.5,
+    '4': 3.33,
+    '5': 4.17,
   }
 
-  const test = '23'
+  const heightValueBasedHours = {
+    '01': 5,
+    '02': 10,
+    '03': 15,
+    '04': 20,
+    '05': 25,
+    '06': 30,
+    '07': 35,
+    '08': 40,
+    '09': 45,
+    '10': 50,
+    '11': 55,
+    '12': 60,
+    '13': 65,
+    '14': 70,
+    '15': 75,
+    '16': 80,
+    '17': 85,
+    '18': 90,
+    '19': 95,
+    '20': 100,
+    '21': 105,
+    '22': 110,
+    '23': 115,
+  }
 
-  const getEventTime = event.date[0] + event.date[1]
+  const heightValueBasedMinutes = {
+    '0': 0,
+    '1': 0.83,
+    '2': 1.66,
+    '3': 2.5,
+    '4': 3.33,
+    '5': 4.17,
+  }
+
+  const getEvenStartHours = event.timeStarts[0] + event.timeStarts[1]
+  const getEventStartMinutes = event.timeStarts[3]
+
+  const getEventEndHours = event.timeEnds[0] + event.timeEnds[1]
+  const getEventEndMinutes = event.timeEnds[3]
 
   return (
-    <EventTimeCardContainer
-      positionTopHours={positionTopValueBasedHour[getEventTime]}
-      positionTopMinutes={positionTopValueBasedMinutes['00']}
-      aria-label={event.title}
-      title={event.title}
-    >
-      <h2>{event.title}</h2>
-      <span>{event.date}</span>
-      <p>{event.description}</p>
-    </EventTimeCardContainer>
+    <>
+      {event.timeStarts || event.timeEnds ? (
+        <EventTimeCardContainer
+          positionTopHours={positionTopValueBasedHours[getEvenStartHours]}
+          positionTopMinutes={
+            positionTopValueBasedMinutes[getEventStartMinutes]
+          }
+          heightHours={heightValueBasedHours[getEventEndHours]}
+          heightMinutes={heightValueBasedMinutes[getEventEndMinutes]}
+          aria-label={event.title}
+          title={event.title}
+        >
+          <h2>{event.title}</h2>
+          <span>
+            {event.date} - {event.timeStarts} - {event.timeEnds}
+          </span>
+          <p>{event.description}</p>
+        </EventTimeCardContainer>
+      ) : null}
+    </>
   )
 }
