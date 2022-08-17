@@ -7,25 +7,19 @@ export function useFetch(locale: string) {
 
   const name = !locale ? 'São Paulo' : locale
   useEffect(() => {
-    function getWeather(lat: number, lon: number) {
-      axios
-        .get(`https://api.openweathermap.org/data/2.5/weather`, {
-          params: {
-            lat,
-            lon,
-            appid: '696740dc709f9bcf2868ca16f259ccdc',
-            lang: 'pt_br',
-            units: 'metric',
-            q: name,
-          },
-        })
-        .then((response) => setData(response.data))
-        .catch((error) => setError(error))
-    }
-
-    navigator.geolocation.getCurrentPosition((position) =>
-      getWeather(position.coords.latitude, position.coords.longitude),
-    )
+    axios
+      .get(`https://api.openweathermap.org/data/2.5/weather`, {
+        params: {
+          lat: 23.6999532,
+          lon: -4657433.15,
+          appid: '696740dc709f9bcf2868ca16f259ccdc',
+          lang: 'pt_br',
+          units: 'metric',
+          q: name,
+        },
+      })
+      .then((response) => setData(response.data))
+      .catch((error) => setError(error))
   }, [setData, name])
 
   return { data, error }
