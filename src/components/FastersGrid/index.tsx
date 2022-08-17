@@ -10,20 +10,20 @@ import { FastersGridContainer } from './stytes'
 export default function FastersGrid() {
   const { state, dispatch } = useContext(Context)
 
-  // useEffect(() => {
-  //   if (JSON.parse(localStorage.getItem('state'))) {
-  //     dispatch({
-  //       type: Types.INIT,
-  //       payload: JSON.parse(localStorage.getItem('state')),
-  //     })
-  //   }
-  // }, [])
+  useEffect(() => {
+    if (JSON.parse(localStorage.getItem('state'))) {
+      dispatch({
+        type: Types.INIT,
+        payload: JSON.parse(localStorage.getItem('state')),
+      })
+    }
+  }, [dispatch])
 
-  // useEffect(() => {
-  //   if (state !== initialState) {
-  //     localStorage.setItem('state', JSON.stringify(state.events))
-  //   }
-  // }, [state])
+  useEffect(() => {
+    if (state !== initialState) {
+      localStorage.setItem('state', JSON.stringify(state.events))
+    }
+  }, [state])
   return (
     <FastersGridContainer>
       <SideBar />

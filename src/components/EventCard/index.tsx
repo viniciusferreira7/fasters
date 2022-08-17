@@ -45,12 +45,14 @@ export default function EventCard({ event }: EventProps) {
         </IconDeleteEditContainer>
         <h4>{event.title}</h4>
         <p>{event.date}</p>
-        <TimeIconContainer>
-          <BsClock size={20} />
-          <p>{event.timeStarts}</p>
-          <span>-</span>
-          <p>{event.timeEnds}</p>
-        </TimeIconContainer>
+        {event.timeStarts || event.timeEnds ? (
+          <TimeIconContainer>
+            <BsClock size={20} />
+            <p>{event.timeStarts}</p>
+            <span>-</span>
+            <p>{event.timeEnds}</p>
+          </TimeIconContainer>
+        ) : null}
         <p>{event.locale}</p>
       </EventCardContainer>
       {openFlag ? (
