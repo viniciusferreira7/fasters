@@ -110,6 +110,8 @@ export default function EditModal({ edit, openEdit, setOpenEdit }: ModalProps) {
               <input
                 ref={dataRef}
                 type="date"
+                min="1999-12-31"
+                max="2102-12-31"
                 onChange={handleCheckInputEmpty}
               />
               <TimeContainer>

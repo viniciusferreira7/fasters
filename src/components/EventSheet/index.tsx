@@ -1,16 +1,34 @@
+import { useContext } from 'react'
+import { Context } from '../../contexts/EventsProvider'
+import EventTimeCard from '../EventTimeCard'
 import {
   BlockContainer,
   HourContainer,
   InfoContainer,
-  TimeEventContainer,
+  EventSheetContainer,
 } from './styles'
 
-export default function TimeEvent() {
+export default function EventSheet() {
+  const { state } = useContext(Context)
+
   return (
-    <TimeEventContainer>
+    <EventSheetContainer>
       <BlockContainer>
         <HourContainer>
-          <p>1:00 AM</p>
+          <p>01:00 </p>
+        </HourContainer>
+        <InfoContainer>
+          <div>
+            {state.events.map((event) => (
+              <EventTimeCard key={event.id} event={event} />
+            ))}
+          </div>
+          <div></div>
+        </InfoContainer>
+      </BlockContainer>
+      <BlockContainer>
+        <HourContainer>
+          <p>02:00</p>
         </HourContainer>
         <InfoContainer>
           <div></div>
@@ -19,7 +37,7 @@ export default function TimeEvent() {
       </BlockContainer>
       <BlockContainer>
         <HourContainer>
-          <p>2:00 AM</p>
+          <p>03:00</p>
         </HourContainer>
         <InfoContainer>
           <div></div>
@@ -28,7 +46,7 @@ export default function TimeEvent() {
       </BlockContainer>
       <BlockContainer>
         <HourContainer>
-          <p>3:00 AM</p>
+          <p>04:00</p>
         </HourContainer>
         <InfoContainer>
           <div></div>
@@ -37,7 +55,7 @@ export default function TimeEvent() {
       </BlockContainer>
       <BlockContainer>
         <HourContainer>
-          <p>4:00 AM</p>
+          <p>05:00</p>
         </HourContainer>
         <InfoContainer>
           <div></div>
@@ -46,7 +64,7 @@ export default function TimeEvent() {
       </BlockContainer>
       <BlockContainer>
         <HourContainer>
-          <p>5:00 AM</p>
+          <p>06:00</p>
         </HourContainer>
         <InfoContainer>
           <div></div>
@@ -55,16 +73,7 @@ export default function TimeEvent() {
       </BlockContainer>
       <BlockContainer>
         <HourContainer>
-          <p>6:00 AM</p>
-        </HourContainer>
-        <InfoContainer>
-          <div></div>
-          <div></div>
-        </InfoContainer>
-      </BlockContainer>
-      <BlockContainer>
-        <HourContainer>
-          <p>7:00 PM</p>
+          <p>07:00</p>
         </HourContainer>
         <InfoContainer>
           <div></div>
@@ -74,7 +83,7 @@ export default function TimeEvent() {
       <BlockContainer></BlockContainer>
       <BlockContainer>
         <HourContainer>
-          <p>8:00 AM</p>
+          <p>08:00</p>
         </HourContainer>
         <InfoContainer>
           <div></div>
@@ -83,7 +92,7 @@ export default function TimeEvent() {
       </BlockContainer>
       <BlockContainer>
         <HourContainer>
-          <p>9:00 AM</p>
+          <p>09:00</p>
         </HourContainer>
         <InfoContainer>
           <div></div>
@@ -92,7 +101,7 @@ export default function TimeEvent() {
       </BlockContainer>
       <BlockContainer>
         <HourContainer>
-          <p>10:00 AM</p>
+          <p>10:00</p>
         </HourContainer>
         <InfoContainer>
           <div></div>
@@ -101,7 +110,7 @@ export default function TimeEvent() {
       </BlockContainer>
       <BlockContainer>
         <HourContainer>
-          <p>11:00 AM</p>
+          <p>11:00</p>
         </HourContainer>
         <InfoContainer>
           <div></div>
@@ -110,7 +119,7 @@ export default function TimeEvent() {
       </BlockContainer>
       <BlockContainer>
         <HourContainer>
-          <p>12:00 AM</p>
+          <p>12:00</p>
         </HourContainer>
         <InfoContainer>
           <div></div>
@@ -119,7 +128,7 @@ export default function TimeEvent() {
       </BlockContainer>
       <BlockContainer>
         <HourContainer>
-          <p>1:00 PM</p>
+          <p>13:00</p>
         </HourContainer>
         <InfoContainer>
           <div></div>
@@ -128,7 +137,7 @@ export default function TimeEvent() {
       </BlockContainer>
       <BlockContainer>
         <HourContainer>
-          <p>2:00 PM</p>
+          <p>14:00</p>
         </HourContainer>
         <InfoContainer>
           <div></div>
@@ -137,7 +146,7 @@ export default function TimeEvent() {
       </BlockContainer>
       <BlockContainer>
         <HourContainer>
-          <p>3:00 PM</p>
+          <p>15:00</p>
         </HourContainer>
         <InfoContainer>
           <div></div>
@@ -146,7 +155,7 @@ export default function TimeEvent() {
       </BlockContainer>
       <BlockContainer>
         <HourContainer>
-          <p>4:00 PM</p>
+          <p>16:00</p>
         </HourContainer>
         <InfoContainer>
           <div></div>
@@ -155,7 +164,7 @@ export default function TimeEvent() {
       </BlockContainer>
       <BlockContainer>
         <HourContainer>
-          <p>5:00 PM</p>
+          <p>17:00</p>
         </HourContainer>
         <InfoContainer>
           <div></div>
@@ -164,7 +173,7 @@ export default function TimeEvent() {
       </BlockContainer>
       <BlockContainer>
         <HourContainer>
-          <p>6:00 PM</p>
+          <p>18:00</p>
         </HourContainer>
         <InfoContainer>
           <div></div>
@@ -173,7 +182,7 @@ export default function TimeEvent() {
       </BlockContainer>
       <BlockContainer>
         <HourContainer>
-          <p>7:00 PM</p>
+          <p>19:00</p>
         </HourContainer>
         <InfoContainer>
           <div></div>
@@ -182,7 +191,7 @@ export default function TimeEvent() {
       </BlockContainer>
       <BlockContainer>
         <HourContainer>
-          <p>8:00 PM</p>
+          <p>20:00</p>
         </HourContainer>
         <InfoContainer>
           <div></div>
@@ -191,7 +200,7 @@ export default function TimeEvent() {
       </BlockContainer>
       <BlockContainer>
         <HourContainer>
-          <p>9:00 PM</p>
+          <p>21:00</p>
         </HourContainer>
         <InfoContainer>
           <div></div>
@@ -200,7 +209,7 @@ export default function TimeEvent() {
       </BlockContainer>
       <BlockContainer>
         <HourContainer>
-          <p>10:00 PM</p>
+          <p>22:00</p>
         </HourContainer>
         <InfoContainer>
           <div></div>
@@ -209,22 +218,13 @@ export default function TimeEvent() {
       </BlockContainer>
       <BlockContainer>
         <HourContainer>
-          <p>11:00 PM</p>
+          <p>23:00</p>
         </HourContainer>
         <InfoContainer>
           <div></div>
           <div></div>
         </InfoContainer>
       </BlockContainer>
-      <BlockContainer>
-        <HourContainer>
-          <p>12:00 PM</p>
-        </HourContainer>
-        <InfoContainer>
-          <div></div>
-          <div></div>
-        </InfoContainer>
-      </BlockContainer>
-    </TimeEventContainer>
+    </EventSheetContainer>
   )
 }

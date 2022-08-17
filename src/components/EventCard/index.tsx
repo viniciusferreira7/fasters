@@ -1,8 +1,7 @@
-import { useContext, useState } from 'react'
+import { useState } from 'react'
 import { AiFillCloseCircle } from 'react-icons/ai'
 import { BsClock } from 'react-icons/bs'
 import { FiEdit } from 'react-icons/fi'
-import { Context } from '../../contexts/EventsProvider'
 import EditEventModal from '../EditEventModal'
 import FlagDeleteEvent from '../FlagDeleteEvent'
 import {
@@ -11,7 +10,7 @@ import {
   TimeIconContainer,
 } from './styles'
 
-interface EventProps {
+export interface EventProps {
   event: {
     id: number
     date: string
@@ -25,7 +24,6 @@ interface EventProps {
 
 export default function EventCard({ event }: EventProps) {
   // eslint-disable-next-line no-unused-vars
-  const { state } = useContext(Context)
 
   const [openFlag, setOpenFlag] = useState(false)
   const [openEdit, setOpenEdit] = useState(false)
@@ -40,7 +38,7 @@ export default function EventCard({ event }: EventProps) {
 
   return (
     <>
-      <EventCardContainer>
+      <EventCardContainer aria-label={event.title} title={event.title}>
         <IconDeleteEditContainer>
           <AiFillCloseCircle size={18} onClick={handleOpenFlag} />
           <FiEdit size={18} onClick={handleOpenEdit} />
@@ -53,8 +51,7 @@ export default function EventCard({ event }: EventProps) {
           <span>-</span>
           <p>{event.timeEnds}</p>
         </TimeIconContainer>
-        <p>Cidade: {event.locale}</p>
-        <p>{event.description}</p>
+        <p>{event.locale}</p>
       </EventCardContainer>
       {openFlag ? (
         <FlagDeleteEvent

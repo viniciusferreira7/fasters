@@ -104,6 +104,8 @@ export default function EventCreationModal({
               <input
                 ref={dataRef}
                 type="date"
+                min="1999-12-31"
+                max="2102-12-31"
                 onChange={handleCheckInputEmpty}
               />
               <TimeContainer>

@@ -1,13 +1,13 @@
 import React from 'react'
 import DayEvents from '../DayEvents'
-import TimeEvent from '../TimeEvent'
+import EventSheet from '../EventSheet'
 import { MainContainer } from './styles'
 
 export default function Main() {
   return (
     <MainContainer>
       <DayEvents />
-      <TimeEvent />
+      <EventSheet />
     </MainContainer>
   )
 }
