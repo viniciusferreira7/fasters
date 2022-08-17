@@ -1,3 +1,3 @@
 ## Fasters
 
-#<https://fasters-pi.vercel.app/>
+<https://fasters-pi.vercel.app/>
