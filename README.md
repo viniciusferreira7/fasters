@@ -29,6 +29,8 @@
 
 #### `React-icons`
 
+#### `Styled-components`
+
 #### `Commitizen`
 
 #### `cz-conventional-changelog`
